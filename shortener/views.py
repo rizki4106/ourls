@@ -38,7 +38,7 @@ class IndexView(View):
                 self.context['method'] = 'POST'
         else:
             encode = self.encode()
-            i = Parse(url=param['url'], parse=encode)
+            i = Parse(url=param['url'], parse=encode, tanggal= datetime.datetime.now())
             i.save()
             self.context['parse'] = encode
             self.context['method'] = "POST"
