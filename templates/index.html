@@ -1,0 +1,41 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Url shortener gratis, url shortener gratis tanpa iklan, url shortener, bit.ly" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel='stylesheet' href="{%  static '/css/style.css' %}" type='text/css'/>
+    <title>Yourl</title>
+</head>
+<body>
+    <div class='container'>
+        <br/>
+            <form action='' method='POST' id='input-url'>
+            {% csrf_token %}
+            <input type='url' name='url' id='input-link' placeholder="Masukan url contoh : https://www.google.com" required/>
+            <button type='submit' class="btn-submit">Mulai <img src="{% static 'image/arrow-right.svg' %}"/></button>
+            </form>
+        <!-- result url -->
+        {% if method == "POST" %}
+            <div class="cover-result">
+                <input type='url' id='res-url' value="{{request.build_absolute_uri}}{{parse}}" title="Copy url"/>
+                <button type='button' class="btn-copy"><img src="{% static 'image/copy.svg' %}"/></button>
+            </div>
+        {% endif %}
+        <!---->
+        <!-- ALERT COPY -->
+        <div class="copy-alert">
+            <h4>LINK BERHASIL DISALIN</h4>
+        </div>
+        <!---->
+    </div>
+    <!-- script -->
+    <script type="text/javascript" src="{% static '/js/style.js' %}"></script>
+    <script>
+        home();
+    </script>
+</body>
+</html>
